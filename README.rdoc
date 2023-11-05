@@ -35,3 +35,144 @@ CREATE DATABASE simple_cms_test;
 GRANT ALL PRIVILEGES ON simple_cms_development.* TO 'rails_user'@'localhost' IDENTIFIED BY 'secretpassword';
 
 GRANT ALL PRIVILEGES ON simple_cms_test.* TO 'rails_user'@'localhost' IDENTIFIED BY 'secretpassword';
+
+-- Set the pasword in database.yml
+
+rails db:schema:dump
+-- Get all the data
+
+rails generate
+-- template file
+
+rails generate controller
+
+rails generate controller demo index
+app>demo_controller.rb
+
+== Route Types
+Simple Route
+Default Route
+Root Route
+Resourceful Routes
+
+== Simple Match Route ==
+get "demo/index"
+
+math "demo/index"
+:to => "demo#index"
+:via => :get
+
+== Default Route ==
+get ':controller(/:action(/:id))'
+match ':controller(/:action(/:id))
+:via => :get
+
+# get ':controller(/:action(/:id))'
+
+== Root Route ==
+root 'demo#index'
+
+rails generate controller demo index
+
+== Redirect
+   redirect_to(:action => 'index')
+   
+Instance Variables
+
+variables
+
+@Instance_variable
+
+# Controller need to set it up before go in to the view
+
+Rails Links
+<%= link_to(text, target) %>
+# target like "demo/index"
+
+<%= link_to('Hello Page', {:action => 'hello'}) %>
+
+Link with Parameters
+<%= link_to('Hello Page with params', {:action => 'hello', :page => 5, :id => 20}) %>
+# http://localhost:3000/demo/hello?id=20&page=5
+
+  get ':controller(/:action(/:id))'
+http://localhost:3000/demo/hello?id=20&page=5
+
+== Databases ==
+SHOW DATABASES;
+CREATE DATABASE db_name;
+USE db_name;
+DROP DATABASE db_name;
+
+GRANT ALL PRIVILEGES ON simple_cms_development.* TO 'rails_user'@'localhost' IDENTIFIED BY 'secretpassword';
+
+SHOW GRANTS FOR 'username'@'localhost';
+
+== Migrations ==
+= Generate Migrations
+rails generate migration MagrationName
+# create    db/migrate/20231105115111_do_nothing_yet.rb
+= Generate Model
+rails generate model ModelName
+
+Table Column Options
+:limit => size
+:default => value
+:null => true/false
+:precision => number
+:scale => number
+
+== Run a Migration ==
+rails db:migrate
+
+SHOW TABLES;
+SHOW FIELDS FROM users;
+SHOW FIELDS FROM schema_migrations;
+SELECT * FROM schema_migrations;
+
+rails db:migrate VERSION=0; #undo all migrations
+rails db:migrate:status
+
+== Run Migrations ==
+rails db:migrate
+rails db:migrate VERSION=0
+rails db:migrate VERSION=20231105115646
+rails db:migrate:status
+rails db:migrate:up VERSION=20231105115646
+rails db:migrate:down VERSION=20231105115646
+rails db:migrate:redo VERSION=20231105115646
+
+== Table Migration Methods == 
+create_table(table, options) do |t|
+...columns...
+end
+
+drop_table(table)
+
+rename_table(table, new_name)
+
+== Column Migration Methods ==
+add_column(table, column, type, options)
+remove_column(table, column)
+rename_column(table, column, new_name)
+change_column(table, column, type, options)
+
+== Index Migration Methods ==
+add_index(table, column, option)
+remove_index(table, column)
+
+== Index Migration Method Options ==
+:unique => true/false
+:name => "your_custom_name
+
+= 4. Database Migration ==
+== Solutions
+rails generate model Subject
+rails generate model Page
+rails generate model Section
+
+5 Models and ActiveRecord
+https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/quiz/urn:li:learningApiAssessment:4583390?resume=false
+
+
+ mysql -u rails_user -p simple_cms_development

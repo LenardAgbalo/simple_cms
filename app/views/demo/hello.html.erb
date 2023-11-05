@@ -1,0 +1,18 @@
+<h1>Hello From hello</h1>
+
+<% @array.each do |n| %>
+<%= n %>
+<% end %>
+
+<br>
+ID: <%= @id %>
+<br>
+ID: <%= params[:id] %>
+<br>
+Page: <%= @page %>
+<br>
+
+Next Page: <%= @page.to_i + 1 %>
+
+
+
