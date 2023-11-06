@@ -271,7 +271,22 @@ Subject.visible
 Subject.search("Initial")
 
 
-6 Associations
+== 6 Associations ==
+
+rails generate migration CreateAdminUsersPagesJoin
+
+
+rails generate controller Subject index show new edit delete
+
+= Rest =
+
+7. Crud Rest and Resourceful Route
+
+8. Controllers and CRUD
+
+
+
+Many-to-many association: Simple
 https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/relationship-types?autoSkip=true&resume=false
 
  mysql -u rails_user -p simple_cms_development
