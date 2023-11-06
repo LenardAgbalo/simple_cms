@@ -171,8 +171,107 @@ rails generate model Subject
 rails generate model Page
 rails generate model Section
 
-5 Models and ActiveRecord
-https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/quiz/urn:li:learningApiAssessment:4583390?resume=false
 
+== 5. Models and ActiveRecord ==
+== ActiveRecord Example
+
+use = User.new
+user.first_name = "Lenard"
+user.save # SQL INSERT
+
+user.last_name = "Agbalo"
+user.save # SQL Update
+
+user.delete # SQL Delete
+
+ActiveRelation Example
+users = User.where(:first_name => "Lenard")
+user = user.order("last_name ASC").limit(5)
+
+== Generating Model
+rails generate model SingularName
+rails generate model Subject
+
+Create file in db/migrate
+File name : 20160450123_create_subject.rb
+Class name: CreateSubjects
+
+Create file in app/Model
+File name: subject.rb
+Class name: Subject
+
+== Rails Console ==
+
+= Create
+subject = Subject.new
+subject.new_record? # Not been saved in database
+subject.name = "First Subject"
+subject = Subject.new(:name => "First SUbject", :position => 1, :visible => true)
+subject.save
+
+if subject.save
+puts "Saved!"
+else
+puts "Not saved!"
+end
+
+subject = Subject.create(:name => 'Second Page', :position => 2)
+# Auto Commit
+
+= Update
+subject = Subject.find(1)
+subject.name = "Initial Subject"
+subject.save
+
+subject = Subject.find(2)
+subject.update_attributes(:name => 'Next Subject', :visible => false)
+
+= Delete
+subject = Subject.find(3)
+subject.destroy
+
+= Find Record
+Subject.find(2)
+# Returns an object or an error
+
+= Dynamic Finders
+Subject.find_by_id(2)
+Subject.find_by_na,e("First Subject)
+# Return an object or nil
+
+Subject.all
+# Return array
+
+= First and Last
+Subject.first
+Subject.last
+Return an object or nill
+
+= Condition
+# Where Condition
+Subject.where(:visible => true)
+
+subjects.class
+ => Subject::ActiveRecord_Relation
+ subjects.to_sql
+
+ subject = Subject.where(["visible = ?", true])
+
+subject = Subject.limit(5)
+
+-- model>subject.rb
+class Subject < ApplicationRecord
+  scope :visible, -> { where(visible: true) }
+  scope :invisible, -> { where(visible: false) }
+  scope :sorted, -> { order(created_at: :desc) }
+  scope :search, ->(query) { where("name LIKE ?", "%#{query}%") }
+end
+-- rails c
+Subject.visible
+Subject.search("Initial")
+
+
+6 Associations
+https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/relationship-types?autoSkip=true&resume=false
 
  mysql -u rails_user -p simple_cms_development
