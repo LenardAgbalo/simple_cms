@@ -294,3 +294,31 @@ rails generate controller Sections index show new edit delete
 Many-to-many association: Simple
 
 mysql -u rails_user -p simple_cms_development
+
+View Helpers
+https://api.rubyonrails.org/classes/ActionController/Helpers.html
+https://www.rubyguides.com/2020/01/rails-helpers/
+
+Sanitization helpers
+
+Cross-Site Scripting
+
+Escape All User-Entered Data
+- URL Parameters
+- Form Parameters
+- Cookie Data
+- Database Data
+
+Escape Method
+html_escape(), h()
+raw()
+html_safe
+XSS Attacks
+http://ha.ckers.org/xss.html
+
+Rails Security Guide
+
+
+Add Quiz on Work Laptop
+
+10 Assets Continue
