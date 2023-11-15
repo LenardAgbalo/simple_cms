@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
 
+  # in application layout naka false
+  layout 'admin'
+
   def index
     @pages = Page.sorted
   end

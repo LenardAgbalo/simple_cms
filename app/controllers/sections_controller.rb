@@ -1,5 +1,8 @@
 class SectionsController < ApplicationController
 
+  # in application layout naka false
+  layout 'admin'
+
   def index
     @sections = Section.sorted
   end

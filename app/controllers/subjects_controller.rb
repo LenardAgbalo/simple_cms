@@ -1,5 +1,8 @@
 class SubjectsController < ApplicationController
 
+  # in application layout naka false
+  layout 'admin'
+
   def index
     @subjects = Subject.sorted
   end
