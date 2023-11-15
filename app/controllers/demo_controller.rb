@@ -1,5 +1,5 @@
 class DemoController < ApplicationController
-  layout false
+  layout 'application'
   def index
       # index is an action
       render('index')
@@ -20,7 +20,7 @@ class DemoController < ApplicationController
   def google
     redirect_to('https://google.com')
   end
-  
+
   def escape_output
 
   end

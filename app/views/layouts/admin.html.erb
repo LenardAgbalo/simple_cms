@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Simple CMS: <%= @page_title || "Admin Area" %></title>
-    </head>
+  <head>
+    <title>Simple CMS: <%= @page_title || "Admin Area" %></title>
+    <%= stylesheet_link_tag('admin', :media => 'all') %>
+  </head>
+  <body>
 
-    <body>
-        <% if !flash[:notice].blank? %>
+    <div id="header">
+      <h1>Simple CMS Admin</h1>
+    </div>
+    <div id="main">
+      <% if !flash[:notice].blank? %>
         <div class="notice">
-            <%= flash[:notice] %>
+          <%= flash[:notice] %>
         </div>
-        <% end %>
-        <!-- before yield -->
+      <% end %>
+
+      <div id="content">
         <%= yield %>
-        <!-- after yield -->
-        
-    </body>
+      </div>
+    </div>
+    <div id="footer">
+      <p id="copyright">&copy; Lenard.com</p>
+    </div>
+  </body>
 </html>

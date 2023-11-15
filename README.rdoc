@@ -322,3 +322,40 @@ Rails Security Guide
 Add Quiz on Work Laptop
 
 10 Assets Continue
+
+
+http://sass-lang.com
+
+ * require_tree .   <-- period is the current directory
+ *= require primary
+ *= require_self
+ */
+
+# Rails helper
+<% stylesheet_link_tag('application') %>
+
+http://coffeescript.org/
+
+<% javascript_include_tag('application') %>
+
+JavaScrip Helpers
+<% javascript_tag do %>
+alert('Are you sure?');
+<% end %>
+
+Sanitizing JavaScrip
+<% text ="User submitted text" %>
+
+<% text = "'); alert('Gotcha!')" %>
+<%= javascript_tag("alert('You said: #{text}');") %>
+
+# use scape_javascriot(), j()
+<% javascript_tag("alert('You said: #{text}');") %>
+
+Image Helpers
+
+<%= image_tag('logo.png') %>
+
+# image with css
+<%= image_tag('logo.png', :size => '90x55', :alt => 'logo) %>
+<%= image_tag('logo.png', :width => '90', :height => '55) %>
