@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
 
-=======
 <% @page_title = @subject.name %>    
->>>>>>> Stashed changes
 <%= link_to("<< Back to List", subjects_path, :class => 'back-link') %>
 
 <div class="subjects show">
@@ -11,7 +8,7 @@
   <table summary="Subject detail view">
     <tr>
       <th>Name</th>
-     <%= highlight(@subject.name) %>
+     <%= @subject.name %>
     </tr>
     <tr>
       <th>Position</th>
