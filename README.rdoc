@@ -378,3 +378,19 @@ Useful Methods for Errors
 ojbect.erros.clear
 object.error.size
 object.error.each {| attr, msg| ... } 
+
+
+Cross-Site Requre Forgery
+CSRF
+Type of attack on website
+
+Prevent CSRF
+Requre user authentication
+Regularly log out inactive users
+GET requests should be read-only
+Actions that expect POST request should only respond to POST requests
+
+CRSF Tocken for JavaScript and Ajax
+<%= csrf_meta_tag %>
+
+continue study 12. Data validation
