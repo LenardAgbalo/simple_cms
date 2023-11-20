@@ -465,3 +465,17 @@ _____________________________
  => ["Email confirmation doesn't match Email"]
 2.6.3 :029 >
 
+validate :custom_method
+
+private
+
+def custom_method
+  if test_case
+    errors.add(:attribute, "message")
+  end
+end
+
+Continue to 13, Controller Features
+Also continue the Chapter Quizzes
+
+https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/quiz/urn:li:learningApiAssessment:4582530?resume=false
