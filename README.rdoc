@@ -394,3 +394,74 @@ CRSF Tocken for JavaScript and Ajax
 <%= csrf_meta_tag %>
 
 continue study 12. Data validation
+
+Validations
+
+Ensure data meets requrments before saving to database
+
+Validation code resides in Models
+
+ActiveRecord::Validations
+Failed validation: will not save , track errors
+
+Validation Methods
+https://guides.rubyonrails.org/active_record_validations.html
+
+rails c
+
+s.erros
+s.errors.count
+s.valid?
+s.errors.full_messages
+2.6.3 :007 > s.errors.count
+ => 1
+2.6.3 :008 > s.errors.full_messages
+ => ["Name can't be blank"]
+2.6.3 :009 > s.name = 'test'
+ => "test"
+2.6.3 :010 > s.errors.count
+ => 1
+2.6.3 :011 > s.valid?
+ => true
+2.6.3 :012 > s.errors.count
+ => 0
+2.6.3 :013 >
+
+_____________________________
+2.6.3 :013 > s.name = 'x' * 300
+ => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
+2.6.3 :014 > s.valid?
+ => false 
+2.6.3 :015 > s.errors.full_messages
+ => ["Name is too long (maximum is 255 characters)"] 
+2.6.3 :016 > 
+
+2.6.3 :016 > u = AdminUser.new(:first_name => 'John', :last_name => 'Doe', :username => 'johndoe')
+ => #<AdminUser id: nil, first_name: "John", last_name: "Doe", email: "", username: "johndoe", hashed_password: nil, created_at: nil, updated_at: nil> 
+2.6.3 :017 > u.valid?
+  AdminUser Exists (3.6ms)  SELECT  1 AS one FROM `admin_users` WHERE `admin_users`.`username` = BINARY 'johndoe' LIMIT 1
+ => false 
+2.6.3 :018 > 
+2.6.3 :018 > u.errors.full_messages
+ => ["Username is too short (minimum is 8 characters)", "Email can't be blank", "Email is invalid"] 
+2.6.3 :019 > 
+
+ => false
+2.6.3 :022 > u.errors.full_messages
+ => ["Email is invalid"]
+2.6.3 :023 > u.email = 'nowhere@nowhere.com'
+ => "nowhere@nowhere.com"
+2.6.3 :024 > u.valid?
+  AdminUser Exists (0.8ms)  SELECT  1 AS one FROM `admin_users` WHERE `admin_users`.`username` = BINARY 'johnddoe1' LIMIT 1
+ => true
+2.6.3 :025 > u.email_confirmation = 'somebody@nowhere.com'
+ => "somebody@nowhere.com"
+2.6.3 :026 > u.errors.full_messages
+ => []
+2.6.3 :027 > u.valid?
+  AdminUser Exists (1.1ms)  SELECT  1 AS one FROM `admin_users` WHERE `admin_users`.`username` = BINARY 'johnddoe1' LIMIT 1
+ => false
+2.6.3 :028 > u.errors.full_messages
+ => ["Email confirmation doesn't match Email"]
+2.6.3 :029 >
+

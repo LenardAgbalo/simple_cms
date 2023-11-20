@@ -7,5 +7,11 @@ class Subject < ApplicationRecord
   scope :sorted, lambda { order("position ASC") }
   scope :newest_first, lambda { order("created_at DESC") }
   scope :search, lambda {|query| where(["name LIKE ?", "%#{query}%"]) }
+
   validates_presence_of :name
+  validates_length_of :name, :maximum => 255
+  # validates_presence_of vs. validates_length_of :minimum => 1
+  # different error messages: "can't be blank" or "is too short"
+  # validates_length_of allows strings with only spaces!
+
 end
