@@ -478,4 +478,55 @@ end
 Continue to 13, Controller Features
 Also continue the Chapter Quizzes
 
-https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/quiz/urn:li:learningApiAssessment:4582530?resume=false
+13. Cookies
+
+Cookies allow us to preserve "state"
+
+Cookies in Rails
+cookies[:username] = "lenard"
+
+cookies[:username] = {
+  :value => "jsmith",
+  :expires => 1.week.from_now
+}
+
+Limitations of Cookies
+
+Maximum data size: 4k
+
+== Sessions == 
+Web server sends a session ID to the browser, which then saves it in a cookies
+Browser send session ID with each future request to that web server
+Web server uses session ID to locate the session file.
+
+ session[:username] ="leard"
+ <%= session[:username] %>
+
+ Controller filters 
+
+ Execute code before  or after a controller action
+ Filter requests before allowing actions
+ Remove code repetition
+
+ Usage-
+ Confirm user authentication
+before_action
+after_action
+around_action
+
+Controller Filter
+Filter method should be declared "private"
+
+Specify which action active the filter with:
+:only => [:method1, :method3]
+:exept => [:method2]
+
+inherited filter can be skipped
+skip_before_actiion
+skip_after_action
+skip_around_action
+
+Continue 13.logging
+https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/controller-filters?autoSkip=true&resume=false
+
+
